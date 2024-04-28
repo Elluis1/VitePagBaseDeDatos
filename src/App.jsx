@@ -7,7 +7,7 @@ function App() {
     <div>
       <img src='descargar.jpg'/>
       <Login />
-      <button >Registrarse</button>
+      
     </div>
   );
 }

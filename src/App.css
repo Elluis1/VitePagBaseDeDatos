@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+.boton{
+  background-color: blueviolet;
+  text-align: center;
+  size: 20;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
