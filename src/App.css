@@ -4,11 +4,23 @@
   padding: 2rem;
   text-align: center;
 }
+.formulario {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 
 .boton{
+  display: flex;
+  justify-content: center;
   background-color: blueviolet;
   text-align: center;
+  gap: 1rem;
   size: 20;
+
 }
 
 .logo {
