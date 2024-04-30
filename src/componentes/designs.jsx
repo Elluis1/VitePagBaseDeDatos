@@ -1,7 +1,7 @@
 import '../App.css'
 
-export function BotonG(txt) {
+export function BotonG({txt, className}) {
     return(
-        <button className="boton"> {txt.txt} </button>
+        <button className={className}> {txt} </button>
     )
 }

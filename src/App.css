@@ -16,14 +16,26 @@
   background-color: red;
 }
 
+/* .botonInicio{
+  display: flex;
+  justify-content: center;
+  background-color: blueviolet;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  size: 10;
+} */
+
 .boton{
   display: flex;
   justify-content: center;
   background-color: blueviolet;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   gap: 1rem;
   size: 20;
-
 }
 
 .logo {
