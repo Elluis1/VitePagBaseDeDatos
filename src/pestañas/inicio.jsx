@@ -12,11 +12,11 @@ export function Inicio({ user, setUser }) {
         <button onClick={handleLogout}>Cerrar sesión</button>
       </header>
       <h1> Bienvenido {user} </h1>
-      <input placeholder="Ingrese el nombre del paciente" />
-      <BotonG className="botonInicio" txt="Agenda de turnos" />
-      <BotonG className="botonInicio" txt="Historias clinicas" />
-      <BotonG className="botonInicio" txt="Cargar nuevo Paciente" />
-      <BotonG className="botonInicio" txt="Crear receta medica" />
+      <input className="inputs" placeholder="Ingrese el nombre del paciente" />
+      <button className="botonInicio" >Agenda de turnos</button>
+      <button className="botonInicio" >Historias clinicas</button>
+      <button className="botonInicio" >Cargar nuevo Paciente</button>
+      <button className="botonInicio" >Crear receta medica</button>
     </div>
   );
 }

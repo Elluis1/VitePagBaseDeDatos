@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      {!(user.length > 0 && password.length > 6) ? (
+      {!(user === nombre && password === contrasenia) ? (
         <Login setUser={setUser} setPassword={setPassword} />
       ) : (
         <Inicio user={user} setUser={setUser} />
