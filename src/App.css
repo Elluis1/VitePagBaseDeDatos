@@ -12,6 +12,9 @@
   gap: 10px;
 }
 
+.error{
+  background-color: red;
+}
 
 .boton{
   display: flex;
