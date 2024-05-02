@@ -18,11 +18,12 @@ export function Login({setUser, setPassword}) {
   };
 
   return (
-    <div>
+    <section>
       <form
         className="formulario"
         onSubmit={handleSubmit}>
         <input
+          className="inputs"
           type="text"
           placeholder="nombre/Correo"
           value={nombre}
@@ -31,6 +32,7 @@ export function Login({setUser, setPassword}) {
           }}
         />
         <input
+          className="inputs"
           type="password"
           placeholder="contraseña"
           value={contraseña}
@@ -38,10 +40,10 @@ export function Login({setUser, setPassword}) {
             setContraseña(e.target.value);
           }}
         />
-        <button>Iniciar sesión</button>
+        <button className="botonInicio">Iniciar sesión</button>
       </form>
       {error && <p className="error"> Todos los campos son obligatorios </p>}
-    </div>
+    </section>
   );
 }
 

@@ -2,21 +2,28 @@ import "./App.css";
 import { Login } from "./pestañas/Login.jsx";
 import { Inicio } from "./pestañas/Inicio.jsx";
 import { useState } from "react";
+import { Agenda } from "./pestañas/Agenda.jsx";
 const nombre = "LuigiMete"
 const contrasenia = "SalchichaPure"
 
 function App() {
   const [user, setUser] = useState([]);
   const [password, setPassword] = useState([]);
+  const [agendas, setAgendas] = useState(false);
+
 
   return (
-    <div className="App">
+    <section className="App">
       {!(user === nombre && password === contrasenia) ? (
-        <Login setUser={setUser} setPassword={setPassword} />
+        <div><Login setUser={setUser} setPassword={setPassword} /></div>
       ) : (
-        <Inicio user={user} setUser={setUser} />
+        <div><Inicio user={user} setUser={setUser} />{
+          !agendas === true
+          ? <Inicio agendas={agendas} setAgendas={setAgendas} />
+          : <Agenda agendas={agendas} setAgendas={setAgendas} />
+        } </div>
       )}
-    </div>
+    </section>
   );
 }
 
