@@ -1,4 +1,3 @@
-import { BotonG } from "../componentes/designs";
 import "../App.css";
 import { useState } from "react";
 
@@ -39,7 +38,7 @@ export function Login({setUser, setPassword}) {
             setContraseña(e.target.value);
           }}
         />
-        <BotonG txt="Iniciar sesión" />
+        <button>Iniciar sesión</button>
       </form>
       {error && <p className="error"> Todos los campos son obligatorios </p>}
     </div>

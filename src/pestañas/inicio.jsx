@@ -1,4 +1,3 @@
-import { BotonG } from "../componentes/designs";
 import "../App.css";
 
 export function Inicio({ user, setUser }) {
