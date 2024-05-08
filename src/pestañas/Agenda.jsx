@@ -1,16 +1,16 @@
 import { useState } from "react";
-import {listaCitas} from '../Archivos/Citas'
+import { listaCitas } from "../Archivos/Citas";
 import "../App";
 
 export function Agenda() {
   const [filtletra, setFiltletra] = useState("");
-  const [filtdia, setFiltdia] = useState([""])
-  // const [listaCitas, setCitas] = useState([]);
-  // const [nombre, setNombre] = useState("");
-  // const [time, setTime] = useState("");
-  // const [day, setDay] = useState("");
-  // const [consult, setConsult] = useState("");
-  // const [id, setId] = useState(Date.now);
+  const [filtdia, setFiltdia] = useState([]);
+  const [botdia, setBotdia] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+  }
 
   // const addCita = () => {
   //   setId(id);
@@ -22,29 +22,45 @@ export function Agenda() {
 
   // setCitas(addCita());
 
-  // const nuevaCita = {
-  //   id: 1,
-  //   paciente: nombre,
-  //   hora: time,
-  //   fecha: day,
-  //   consulta: consult,
-  // }
-
   // const borrarCita = (id) => {
   //   const citasFiltradas = listaCitas.filter((cita) => cita.id !== id);
   // };
 
   return (
     <section>
-      <h1>
-        Citas pendientes
-      </h1>
-      <input type="checkbox" placeholder="Lunes" onClick={() => setFiltdia("Lunes") }/>
-      <input type="checkbox" placeholder="Martes" onClick={() => setFiltdia("Martes") }/>
-      <input type="checkbox" placeholder="Miercoles" onClick={() => setFiltdia("Miercoles") }/>
-      <input type="checkbox" placeholder="Jueves" onClick={() => setFiltdia("Jueves") }/>
-      <input type="checkbox" placeholder="Viernes" onClick={() => setFiltdia("Viernes") }/>
-      <input type="checkbox" placeholder="Sabado" onClick={() => setFiltdia("Sabado") }/>
+      <h1>Citas pendientes</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="checkbox"
+          placeholder="Lunes"
+          onClick={() => setFiltdia("lunes")}
+        />
+        <input
+          type="checkbox"
+          placeholder="Martes"
+          onClick={() => setFiltdia("Martes")}
+        />
+        <input
+          type="checkbox"
+          placeholder="Miercoles"
+          onClick={() => setFiltdia("Miercoles")}
+        />
+        <input
+          type="checkbox"
+          placeholder="Jueves"
+          onClick={() => setFiltdia("Jueves")}
+        />
+        <input
+          type="checkbox"
+          placeholder="Viernes"
+          onClick={() => setFiltdia("Viernes")}
+        />
+        <input
+          type="checkbox"
+          placeholder="Sabado"
+          onClick={() => setFiltdia("Sabado")}
+        />
+      </form>
       <input
         onChange={(e) => setFiltletra(e.target.value)}
         type="name"
@@ -57,10 +73,10 @@ export function Agenda() {
             <h1 key={elemento.id} />
           ) : (
             <li key={elemento.id}>
-              Nombre: {elemento.paciente} - Fecha: {elemento.fecha} - Dia: {elemento.dia} - Hora: {elemento.hora} - Razon de la consulta: {elemento.consulta}
-              <button className="error" >
-                Eliminar cita
-              </button>
+              Nombre: {elemento.paciente} - Fecha: {elemento.fecha} - Dia:{" "}
+              {elemento.dia} - Hora: {elemento.hora} - Razon de la consulta:{" "}
+              {elemento.consulta}
+              <button className="error">Eliminar cita</button>
             </li>
           )
         )}
@@ -95,7 +111,8 @@ export function Agenda() {
 //   </section>
 // );
 
-{/*   <h2>
+{
+  /*   <h2>
         Agregar Cita
         <form>
           <input
@@ -116,4 +133,5 @@ export function Agenda() {
           />
           <button type="submit" >Guardar</button>
         </form>
-      </h2> */}
+      </h2> */
+}
