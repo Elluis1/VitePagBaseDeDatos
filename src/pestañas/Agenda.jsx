@@ -3,14 +3,16 @@ import { listaCitas } from "../Archivos/Citas";
 import "../App";
 
 export function Agenda() {
-  const [filtletra, setFiltletra] = useState("");
+  const [nombre, setNombre] = useState();
+  const [filtron, setFiltron] = useState()
   const [filtdia, setFiltdia] = useState([]);
-  const [botdia, setBotdia] = useState(false)
+
+
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    
-  }
+    e.preventDefault()
+    setFiltron(nombre)
+  };
 
   // const addCita = () => {
   //   setId(id);
@@ -29,7 +31,7 @@ export function Agenda() {
   return (
     <section>
       <h1>Citas pendientes</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           type="checkbox"
           placeholder="Lunes"
@@ -61,15 +63,18 @@ export function Agenda() {
           onClick={() => setFiltdia("Sabado")}
         />
       </form>
-      <input
-        onChange={(e) => setFiltletra(e.target.value)}
+      <form
+      onSubmit={handleSubmit}>
+      <input onChange={(e) => setNombre(e.target.value)}
         type="name"
         className="inputs"
         placeholder="Ingrese el nombre del paciente"
       />
+    <button/>
+      </form>
       <div className="citas">
         {listaCitas.map((elemento) =>
-          !(elemento.dia === filtdia) ? (
+          !(elemento.dia === filtdia || elemento.paciente === filtron) ? (
             <h1 key={elemento.id} />
           ) : (
             <li key={elemento.id}>
