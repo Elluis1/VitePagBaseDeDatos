@@ -4,14 +4,12 @@ import "../App";
 
 export function Agenda() {
   const [nombre, setNombre] = useState();
-  const [filtron, setFiltron] = useState()
+  const [filtron, setFiltron] = useState();
   const [filtdia, setFiltdia] = useState([]);
 
-
-
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setFiltron(nombre)
+    e.preventDefault();
+    setFiltron(nombre);
   };
 
   // const addCita = () => {
@@ -63,14 +61,14 @@ export function Agenda() {
           onClick={() => setFiltdia("Sabado")}
         />
       </form>
-      <form
-      onSubmit={handleSubmit}>
-      <input onChange={(e) => setNombre(e.target.value)}
-        type="name"
-        className="inputs"
-        placeholder="Ingrese el nombre del paciente"
-      />
-    <button/>
+      <form onSubmit={handleSubmit}>
+        <input
+          onChange={(e) => setNombre(e.target.value)}
+          type="name"
+          className="inputs"
+          placeholder="Ingrese el nombre del paciente"
+        />
+        <button>Buscar</button>
       </form>
       <div className="citas">
         {listaCitas.map((elemento) =>
