@@ -1,30 +1,27 @@
 import { useState } from "react";
 
 export function Pacientes() {
-  const [id, setId] = useState()
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [nacimiento, setNacimiento] = useState(Date);
+  const [nombre, setNombre] = useState();
+  const [apellido, setApellido] = useState();
+  const [nacimiento, setNacimiento] = useState();
   const [listapacientes, setPaciente] = useState([]);
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    const nuevoPaciente = [
-        id,
+    const nuevoPaciente = {
         nombre,
         apellido,
         nacimiento,
-    ];
-
+    };
     setPaciente([...listapacientes, nuevoPaciente]);
   };
 
-  const handleRemovePaciente = (id) => {
-    const newPacientes = listapacientes.filter(
-      (paciente) => paciente.id !== id
-    );
-    setPaciente(newPacientes);
-  };
+//   const handleRemovePaciente = (id) => {
+//     const newPacientes = listapacientes.filter(
+//       (paciente) => paciente.id !== id
+//     );
+//     setPaciente(newPacientes);
+//   };
 
   return (
     <div>
@@ -48,17 +45,16 @@ export function Pacientes() {
           type="date"
           placeholder="Escriba la fecha de nacimiento"
         />
-        <button type="submit" onClick={setId(Date.now)}>Subir</button>
+        <button type="submit">Subir</button>
       </form>
-      <h1>
-        {listapacientes.map((elemento) => {
-          <h2 key={elemento.id} onClick={handleRemovePaciente(elemento.id)}>
-            {" "}
+      <ul>
+        {listapacientes.map((elemento, index) => (
+          <li key={index}>
             Nombre: {elemento.nombre} - Apellido: {elemento.apellido} - Fecha de
             nacimiento: {elemento.nacimiento}{" "}
-          </h2>;
-        })}
-      </h1>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
