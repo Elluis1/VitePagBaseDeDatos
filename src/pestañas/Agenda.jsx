@@ -5,10 +5,12 @@ import "../App";
 export function Agenda() {
   const [nombre, setNombre] = useState();
   const [filtron, setFiltron] = useState();
-  const [filtdia, setFiltdia] = useState([]);
+  const [filtdia, setFiltdia] = useState();
+  const [dia, setDia] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setDia(filtdia)
     setFiltron(nombre);
   };
 
@@ -29,7 +31,7 @@ export function Agenda() {
   return (
     <section>
       <h1>Citas pendientes</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="checkbox"
           placeholder="Lunes"
@@ -72,7 +74,7 @@ export function Agenda() {
       </form>
       <div className="citas">
         {listaCitas.map((elemento) =>
-          !(elemento.dia === filtdia || elemento.paciente === filtron) ? (
+          !(elemento.dia === dia || elemento.paciente === filtron) ? (
             <h1 key={elemento.id} />
           ) : (
             <li key={elemento.id}>

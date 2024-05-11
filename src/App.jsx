@@ -3,6 +3,7 @@ import { Login } from "./pestañas/Login.jsx";
 import { Inicio } from "./pestañas/Inicio.jsx";
 import { useState } from "react";
 import { Agenda } from "./pestañas/Agenda";
+import { Pacientes } from "./pestañas/Pacientes.jsx";
 const nombre = "LuigiMete"
 const contrasenia = "SalchichaPure"
 
@@ -12,7 +13,7 @@ function App() {
 
   return (
     <section className="App">
-      <Agenda />
+      <Pacientes></Pacientes>
     </section>
   );
 }
