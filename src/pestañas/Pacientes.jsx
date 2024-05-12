@@ -1,20 +1,30 @@
 import { useState } from "react";
+import {db} from './db'
+import { useLiveQuery } from "dexie-react-hooks";
 
 export function Pacientes() {
   const [nombre, setNombre] = useState();
   const [apellido, setApellido] = useState();
   const [nacimiento, setNacimiento] = useState();
-  const [listapacientes, setPaciente] = useState([]);
+  const pacientes = useLiveQuery(() => db.paciente.toArray());
+  // const [listapacientes, setPaciente] = useState([]);
 
-  const handlesubmit = (e) => {
-    e.preventDefault();
-    const nuevoPaciente = {
-        nombre,
-        apellido,
-        nacimiento,
-    };
-    setPaciente([...listapacientes, nuevoPaciente]);
-  };
+  async function handlesubmit(e) {
+    e.preventDefault;
+      try {
+        const id = await db.paciente.add({
+            nombre,
+            apellido,
+            nacimiento,
+        });
+        setApellido('')
+        setNombre('')
+        setNacimiento()
+      }
+      catch(error){
+        return console.log('algo fallo')
+      }
+  }
 
 //   const handleRemovePaciente = (id) => {
 //     const newPacientes = listapacientes.filter(
@@ -48,8 +58,8 @@ export function Pacientes() {
         <button type="submit">Subir</button>
       </form>
       <ul>
-        {listapacientes.map((elemento, index) => (
-          <li key={index}>
+        {pacientes?.map((elemento) => (
+          <li key={elemento.id}>
             Nombre: {elemento.nombre} - Apellido: {elemento.apellido} - Fecha de
             nacimiento: {elemento.nacimiento}{" "}
           </li>
@@ -58,3 +68,5 @@ export function Pacientes() {
     </div>
   );
 }
+
+  

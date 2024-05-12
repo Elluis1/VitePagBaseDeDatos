@@ -33,32 +33,32 @@ export function Agenda() {
       <h1>Citas pendientes</h1>
       <form onSubmit={handleSubmit}>
         <input
-          type="checkbox"
+          type="radio"
           placeholder="Lunes"
           onClick={() => setFiltdia("lunes")}
         />
         <input
-          type="checkbox"
+          type="radio"
           placeholder="Martes"
           onClick={() => setFiltdia("Martes")}
         />
         <input
-          type="checkbox"
+          type="radio"
           placeholder="Miercoles"
           onClick={() => setFiltdia("Miercoles")}
         />
         <input
-          type="checkbox"
+          type="radio"
           placeholder="Jueves"
           onClick={() => setFiltdia("Jueves")}
         />
         <input
-          type="checkbox"
+          type="radio"
           placeholder="Viernes"
           onClick={() => setFiltdia("Viernes")}
         />
         <input
-          type="checkbox"
+          type="radio"
           placeholder="Sabado"
           onClick={() => setFiltdia("Sabado")}
         />

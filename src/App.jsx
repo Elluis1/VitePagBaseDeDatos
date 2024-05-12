@@ -13,7 +13,7 @@ function App() {
 
   return (
     <section className="App">
-      <Pacientes></Pacientes>
+      <Pacientes/>
     </section>
   );
 }
