@@ -1,41 +1,45 @@
 import { useState } from "react";
-import {db} from './db'
+import { db } from "./db";
 import { useLiveQuery } from "dexie-react-hooks";
 
 export function Pacientes() {
   const [nombre, setNombre] = useState();
   const [apellido, setApellido] = useState();
   const [nacimiento, setNacimiento] = useState();
+  const [nombrefilt, setNombrefilt] = useState();
   const pacientes = useLiveQuery(() => db.paciente.toArray());
   // const [listapacientes, setPaciente] = useState([]);
 
   async function handlesubmit(e) {
     e.preventDefault;
-      try {
-        const id = await db.paciente.add({
-            nombre,
-            apellido,
-            nacimiento,
-        });
-        setApellido('')
-        setNombre('')
-        setNacimiento()
-      }
-      catch(error){
-        return console.log('algo fallo')
-      }
+    try {
+      const id = await db.paciente.add({
+        nombre,
+        apellido,
+        nacimiento,
+      });
+
+      setApellido("");
+      setNombre("");
+      setNacimiento();
+    } catch (error) {
+      return console.log("algo fallo");
+    }
   }
 
-//   const handleRemovePaciente = (id) => {
-//     const newPacientes = listapacientes.filter(
-//       (paciente) => paciente.id !== id
-//     );
-//     setPaciente(newPacientes);
-//   };
+  async function filtroNombre(e) {
+    e.preventDefault();
+
+    const somePacientes = await db.paciente
+      .where("nombre")
+      .equals(nombrefilt)
+      .toArray();
+  }
 
   return (
     <div>
       <form onSubmit={handlesubmit}>
+        <div>Agregar paciente nuevo</div>
         <input
           onChange={(e) => {
             setNombre(e.target.value);
@@ -57,16 +61,30 @@ export function Pacientes() {
         />
         <button type="submit">Subir</button>
       </form>
-      <ul>
-        {pacientes?.map((elemento) => (
-          <li key={elemento.id}>
-            Nombre: {elemento.nombre} - Apellido: {elemento.apellido} - Fecha de
-            nacimiento: {elemento.nacimiento}{" "}
-          </li>
-        ))}
-      </ul>
+      <h1>Buscar pacientes</h1>
+      <form onSubmit={filtroNombre}>
+        <input onChange={(e) => setNombrefilt(e.target.value)}/>
+        <button >Buscar</button>
+      </form>
+      <h1>
+        {!(nombrefilt !== "")
+          ? pacientes?.filter((elemento) => {
+              !(nombrefilt === elemento.nombre) ? (
+                <h1>No hay ningun paciente</h1>
+              ) : (
+                <li>
+                  Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
+                  Fecha de nacimiento: {elemento.nacimiento}{" "}
+                </li>
+              );
+            })
+          : pacientes?.map((elemento) => (
+              <li key={elemento.id}>
+                Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
+                Fecha de nacimiento: {elemento.nacimiento}{" "}
+              </li>
+            ))}
+      </h1>
     </div>
   );
 }
-
-  
