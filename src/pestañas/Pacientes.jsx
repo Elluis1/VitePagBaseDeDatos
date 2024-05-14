@@ -29,11 +29,6 @@ export function Pacientes() {
 
   async function filtroNombre(e) {
     e.preventDefault();
-
-    const somePacientes = await db.paciente
-      .where("nombre")
-      .equals(nombrefilt)
-      .toArray();
   }
 
   return (
@@ -68,22 +63,22 @@ export function Pacientes() {
       </form>
       <h1>
         {!(nombrefilt !== "")
-          ? pacientes?.filter((elemento) => {
-              !(nombrefilt === elemento.nombre) ? (
-                <h1>No hay ningun paciente</h1>
-              ) : (
-                <li>
-                  Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
-                  Fecha de nacimiento: {elemento.nacimiento}{" "}
-                </li>
-              );
-            })
-          : pacientes?.map((elemento) => (
+          ? pacientes?.map((elemento) => (
               <li key={elemento.id}>
                 Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
                 Fecha de nacimiento: {elemento.nacimiento}{" "}
               </li>
-            ))}
+            ))
+          : pacientes?.filter((elemento) => {
+            !(nombrefilt === elemento.nombre) ? (
+              <h1>No hay ningun paciente</h1>
+            ) : (
+              <li>
+                Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
+                Fecha de nacimiento: {elemento.nacimiento}{" "}
+              </li>
+            );
+          })}
       </h1>
     </div>
   );
