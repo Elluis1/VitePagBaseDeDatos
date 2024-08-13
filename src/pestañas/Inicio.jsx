@@ -20,7 +20,6 @@ export function Inicio({ user, setUser }) {
       </div>
       <button className="botonInicio">Agenda de turnos</button>
       <button className="botonInicio">Pacientes</button>
-      <button className="botonInicio">Historias clinicas</button>
       <button className="botonInicio">Crear receta medica</button>
     </section>
   );

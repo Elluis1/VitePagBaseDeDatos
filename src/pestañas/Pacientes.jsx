@@ -13,7 +13,7 @@ export function Pacientes() {
   async function handlesubmit(e) {
     e.preventDefault;
     try {
-      const id = await db.paciente.add({
+      let id = await db.paciente.add({
         nombre,
         apellido,
         nacimiento,
@@ -25,10 +25,6 @@ export function Pacientes() {
     } catch (error) {
       return console.log("algo fallo");
     }
-  }
-
-  async function filtroNombre(e) {
-    e.preventDefault();
   }
 
   return (
@@ -57,29 +53,40 @@ export function Pacientes() {
         <button type="submit">Subir</button>
       </form>
       <h1>Buscar pacientes</h1>
-      <form onSubmit={filtroNombre}>
-        <input onChange={(e) => setNombrefilt(e.target.value)}/>
-        <button >Buscar</button>
-      </form>
-      <h1>
-        {!(nombrefilt !== "")
-          ? pacientes?.map((elemento) => (
-              <li key={elemento.id}>
-                Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
-                Fecha de nacimiento: {elemento.nacimiento}{" "}
-              </li>
-            ))
-          : pacientes?.filter((elemento) => {
-            !(nombrefilt === elemento.nombre) ? (
-              <h1>No hay ningun paciente</h1>
-            ) : (
-              <li>
-                Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
-                Fecha de nacimiento: {elemento.nacimiento}{" "}
-              </li>
-            );
-          })}
-      </h1>
+        <input onChange={(e) => toString(setNombrefilt(e.target.value))}/>
+      <h2>
+        {
+          pacientes?.map(elemento => (
+            <li key={elemento.id}>
+              Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
+              Fecha de nacimiento: {elemento.nacimiento}{" "}
+            </li>
+          ))
+        }
+      </h2>
     </div>
   );
 }
+
+
+
+// {! nombrefilt === ""
+//   ? pacientes?.map((elemento) => {
+//    <li key={elemento.id}>
+//      Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
+//      Fecha de nacimiento: {elemento.nacimiento}{" "}
+//    </li>
+//   })
+//   : pacientes?.filter((elemento) => {
+//    !(elemento.nombre === nombrefilt)
+//    ? (
+//        <li key={elemento.id}>
+//          Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
+//          Fecha de nacimiento: {elemento.nacimiento}{" "}
+//        </li>
+//      ) : (
+//        <h3>No hay ningun paciente</h3>
+//      )
+//   })
+//  }
+
