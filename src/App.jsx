@@ -4,6 +4,7 @@ import { Inicio } from "./pestañas/Inicio.jsx";
 import { useState } from "react";
 import { Agenda } from "./pestañas/Agenda";
 import { Pacientes } from "./pestañas/Pacientes.jsx";
+
 const nombre = "LuigiMete"
 const contrasenia = "SalchichaPure"
 

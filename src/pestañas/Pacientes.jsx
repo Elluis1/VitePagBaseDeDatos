@@ -6,10 +6,15 @@ export function Pacientes() {
   const [nombre, setNombre] = useState();
   const [apellido, setApellido] = useState();
   const [nacimiento, setNacimiento] = useState();
-  const [nombrefilt, setNombrefilt] = useState();
-  const pacientes = useLiveQuery(() => db.paciente.toArray());
-  // const [listapacientes, setPaciente] = useState([]);
+  const [pacienteSelec, setPacienteSelec] = useState();
 
+  // Usar cuando se pueda implementar bien el filtro
+  // const [nombrefilt, setNombrefilt] = useState();
+
+  // Llama a la base de datos y toma hace que pacientes sea una cadena
+  const pacientes = useLiveQuery(() => db.paciente.toArray());
+
+  // Guardar un paciente nuevo
   async function handlesubmit(e) {
     e.preventDefault;
     try {
@@ -27,6 +32,7 @@ export function Pacientes() {
     }
   }
 
+  // Diseño del formulario
   return (
     <div>
       <form onSubmit={handlesubmit}>
@@ -52,12 +58,10 @@ export function Pacientes() {
         />
         <button type="submit">Subir</button>
       </form>
-      <h1>Buscar pacientes</h1>
-        <input onChange={(e) => toString(setNombrefilt(e.target.value))}/>
       <h2>
         {
           pacientes?.map(elemento => (
-            <button onClick={(e) => console.log("pepito")} key={elemento.id}>
+            <button onClick={setPacienteSelec(elemento)} key={elemento.id}>
               Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
               Fecha de nacimiento: {elemento.nacimiento}{" "}
             </button>
@@ -68,7 +72,8 @@ export function Pacientes() {
   );
 }
 
-
+{/* <h1>Buscar pacientes</h1>
+<input onChange={(e) => toString(setNombrefilt(e.target.value))}/> */}
 
 // {! nombrefilt === ""
 //   ? pacientes?.map((elemento) => {

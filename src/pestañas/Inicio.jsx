@@ -2,6 +2,10 @@ import "../App.css";
 import { useState } from "react";
 
 export function Inicio({ user, setUser }) {
+  const [calendary, setCalendary] = useState(false)
+  const [pacientes, setPacientes] = useState(false)
+  const [receta, setReceta] = useState(false)
+
   const handleLogout = () => {
     setUser([]);
   };
@@ -18,9 +22,9 @@ export function Inicio({ user, setUser }) {
           placeholder="Ingrese el nombre del paciente"
         />
       </div>
-      <button className="botonInicio">Agenda de turnos</button>
-      <button className="botonInicio">Pacientes</button>
-      <button className="botonInicio">Crear receta medica</button>
+      <button onClick={setCalendary(true)} className="botonInicio">Agenda de turnos</button>
+      <button onClick={setPacientes(true)} className="botonInicio">Pacientes</button>
+      <button onClick={setReceta(true)} className="botonInicio">Crear receta medica</button>
     </section>
   );
 }
