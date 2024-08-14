@@ -57,10 +57,10 @@ export function Pacientes() {
       <h2>
         {
           pacientes?.map(elemento => (
-            <li key={elemento.id}>
+            <button onClick={(e) => console.log("pepito")} key={elemento.id}>
               Nombre: {elemento.nombre} - Apellido: {elemento.apellido} -
               Fecha de nacimiento: {elemento.nacimiento}{" "}
-            </li>
+            </button>
           ))
         }
       </h2>
